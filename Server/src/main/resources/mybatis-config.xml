@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--引入外部配置文件-->
+    <properties resource="dataSource.properties">
+        <property name="username" value="root"/>
+    </properties>
+
+    <!--配置环境 （Spring中不再使用）-->
+
+    <environments default="development">
+
+        <!--环境子属性-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--            数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverclass}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--映射器 有三种映射方式-->
+    <mappers>
+
+        <!--resource一次只能映射一个文件-->
+        <mapper resource="mapper/userDaolmpl.xml"/>
+<!--        <mapper resource="mapper/UserMapper2.xml"/>-->
+<!--        <mapper resource="mapper/OrdersMapper.xml"/>-->
+
+        <!--批量添加映射方式-->
+        <package name=""/>
+    </mappers>
+</configuration>
